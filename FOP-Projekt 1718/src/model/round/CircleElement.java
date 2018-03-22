@@ -45,6 +45,7 @@ public class CircleElement extends EllipseElement {
 			p[i] = n;
 		}
 		circle.setPoints(p);
+
 		circle.changeColorCode(super.getColorCode());
 
 		// copy the meta data

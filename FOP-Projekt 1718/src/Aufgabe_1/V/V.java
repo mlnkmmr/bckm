@@ -95,7 +95,7 @@ public class V<T> {
 		// The key and the comparator must be unequal null
 		if (key == null || cmp == null)
 			throw new IllegalArgumentException("The key and the comparator must be unequal null.");
-		// A dummy lsit
+		// A dummy listt
 		ListItem<T> dummy = new ListItem<>(null);
 		ListItem<T> current = dummy;
 		for (ListItem<T> p = lst; p != null; p = p.next) {

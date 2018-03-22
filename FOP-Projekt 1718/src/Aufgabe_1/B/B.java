@@ -2,6 +2,7 @@ package Aufgabe_1.B;
 
 import data.ListItem;
 
+import java.lang.reflect.Array;
 import java.util.Comparator;
 
 /**
@@ -26,8 +27,23 @@ public class B<T> {
 	 *             if arr is null
 	 */
 	public void rotateQuadrupleLeft(T[] arr) throws IllegalArgumentException {
-		// TODO Your task
-		return;
+		if(arr==null)
+			throw new IllegalArgumentException("The array must be unequal null.");
+		rotateQuadrupleLeftHelper(arr, 0);
+	}
+	public void rotateQuadrupleLeftHelper(T[] arr, int i){
+		if(i+3<arr.length){
+			T tmp0=arr[0+i];
+			T tmp1=arr[1+i];
+			T tmp2=arr[2+i];
+			T tmp3=arr[3+i];
+			arr[0+i]=tmp1;
+			arr[1+i]=tmp2;
+			arr[2+i]=tmp3;
+			arr[4+i]=tmp0;
+			rotateQuadrupleLeftHelper(arr, i+4);
+		}
+		else return;
 	}
 
 	/**
@@ -46,9 +62,21 @@ public class B<T> {
 	 *             if key or cmp is null
 	 */
 	public ListItem<T> insertSingle(ListItem<T> lst, T key, Comparator<T> cmp) throws IllegalArgumentException {
-		// TODO Your task
-		return null;
+		if (key == null || cmp == null)
+			throw new IllegalArgumentException("The key and the comparator must be unequal null.");
+		insert(lst, key, cmp);
+		return lst;
 	}
+	public void insert(ListItem<T> lst, T key, Comparator <T> cmp){
+		if(cmp.compare(lst.key, key)>0 && cmp.compare(lst.next.key, key)<0){
+			ListItem<T> tmp=lst.next;
+			ListItem<T> dummy = new ListItem<>(key);
+			dummy.next=tmp;
+			lst.next=dummy;
+		}
+		else insert(lst.next, key, cmp);
+	}
+	
 
 	/**
 	 * LÃ¶scht das Kopf-Element des Parameters lst. Die Methode gibt den neuen Listenkopf zurÃ¼ck. Wenn fÃ¼r lst eine
@@ -60,8 +88,11 @@ public class B<T> {
 	 * @return list with a new head
 	 */
 	public ListItem<T> removeHead(ListItem<T> lst) {
-		// TODO Your task
+		if(lst==null)
 		return null;
+		ListItem<T> tmp=lst.next;
+		lst.next=null;
+		return tmp;
 	}
 
 	/**
@@ -74,8 +105,40 @@ public class B<T> {
 	 * @return the new list
 	 */
 	public ListItem<T> ringShiftRight(ListItem<T> lst) {
-		// TODO Your task
-		return null;
+		if(lst==null)
+	      return null;
+		ListItem<T> head= getLast(lst);
+		ListItem<T> second= lst;
+		ListItem<T> last= vorletztesELement(lst);
+		last.next=null;
+		head.next=second;
+		  return head;
+	}
+	/**
+	 * Die Methode geht die Liste rekursiv durch und gibt das letzte Element 
+	 * zurück
+	 * @param lst Die Liste deren Letztes Element zurückgegeben werden soll
+	 * @return Gibt das letzte Listenelement zurück
+	 */
+	public ListItem<T> getLast(ListItem<T> lst){
+		if(lst.next==null)
+			return lst;
+		else
+		    getLast(lst);
+		    return null;
+	}
+	/**
+	 * Die Methode geht die Liste rekursiv durch und gibt das vorletzte Element 
+	 * zurück
+	 * @param lst Die Liste deren Letztes Element zurückgegeben werden soll
+	 * @return Gibt das vorletzte Listenelement zurück
+	 */
+	public ListItem<T> vorletztesELement(ListItem<T> lst){
+		if(lst.next.next==null)
+			return lst;
+		else
+		    getLast(lst);
+		    return null;
 	}
 
 	/**
@@ -88,9 +151,26 @@ public class B<T> {
 	 * @return List of (List of T)
 	 */
 	public ListItem<ListItem<T>> listInLists(ListItem<T> lst) {
-		// TODO Your task
-		return null;
+		if(lst==null){
+			return null;
+		}
+		ListItem<ListItem<T>> first=new ListItem<>(lst);
+		ListItem<ListItem<T>> tmp=first;
+		lst.next=null;
+		lst=lst.next;
+		ListItem<T> size=lst;
+		for(int i=0; i<size.getSize(); i++){
+			ListItem<ListItem<T>> second=new ListItem<>(lst);
+			first.next=second;
+			first=second;
+			ListItem<T> nxt=lst.next;
+			lst.next=null;
+			lst=nxt;
+		}
+		return tmp;
 	}
+
+	
 
 	/**
 	 * Die Methode selektiert alle SchlÃ¼sselwerte der Liste lst, die vom Ã¼bergebenen Typ type sind. Diese Elemente
@@ -106,7 +186,25 @@ public class B<T> {
 	 *             if type is null
 	 */
 	public T[] selectType(ListItem<T> lst, Class<? extends T> type) throws IllegalArgumentException {
-		// TODO Your task
-		return null;
+		if (type == null || lst == null)
+			throw new IllegalArgumentException("The list and the type must be unequal null.");
+		int j=0;
+		ListItem<T> first=lst;
+		while(lst!=null){
+			if(type.isInstance(lst.key))
+					j++;
+			lst=lst.next;
+		}
+		T[] arr=(T[])Array.newInstance(type, j);
+		lst=first;
+		int a=0;
+		while(lst!=null){
+			if(type.isInstance(lst.key)){
+			arr[a]=lst.key;
+			a++;
+			}
+			lst=lst.next;
+		}
+		return arr;
 	}
 }

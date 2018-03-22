@@ -1,7 +1,7 @@
 package Aufgabe_1.A;
 
 import data.ListItem;
-
+import java.util.Arrays;
 import java.util.Comparator;
 
 /**
@@ -9,6 +9,7 @@ import java.util.Comparator;
  * 
  * @author Lukas Roehr
  * @author David Koehler
+ * @author Tessa Crößmann
  * @param <T>
  *            Generic Type
  */
@@ -26,11 +27,45 @@ public class A<T> {
 	 * @throws IllegalArgumentException
 	 *             if arr is null
 	 */
-	public void invertTriples(T[] arr) throws IllegalArgumentException {
-		// TODO Your task
-		return;
+	
+	public void invertTriples(T[] arr) throws IllegalArgumentException
+	{
+		if(arr == null)
+		{
+			throw new IllegalArgumentException("arr ist null");
+		}
+		
+		T swap = arr[0];
+		arr[0] = arr[2];
+		arr[2] = swap; 
+		T[] help = Arrays.copyOf(arr, 3); 
+		T[] narr = Arrays.copyOfRange(arr, 3, arr.length - 1); 
+		
+		if(narr.length < 3)
+		{
+			return;
+		}
+		else
+		{
+			invertTriples(narr);
+		}
+		
+		arr = connect(help, narr);
 	}
 
+	/**
+	 * Die Hilfsmethode fügt 2 Arrays zusammen, indem es das erste auf die gemeinsame Länge erweitert und dann die Arrays zusammenfügt.
+	 * @param eins erstes Array, an welches das 2. angehängt wird.
+	 * @param zwei zweites Array. 
+	 * @return T[] return 
+	 */
+	public T[] connect(T[] eins, T[] zwei)
+	{
+		T[] result = Arrays.copyOf(eins, eins.length + zwei.length);
+		System.arraycopy(zwei, 0, result, eins.length, zwei.length);
+		return result;
+	}
+	
 	/**
 	 * FÃ¼gt ein Listenelement mit dem SchlÃ¼sselwert key am Anfang der Liste ein und gibt diesen neuen Listenkopf zurÃ¼ck.
 	 * HierfÃ¼r darf ein neues Listenelement erstellt werden. Implementieren Sie diese Methode in konstanter Laufzeit.
@@ -41,9 +76,11 @@ public class A<T> {
 	 *            the key to set for the new list head
 	 * @return the new List
 	 */
-	public ListItem<T> insertSingleHead(ListItem<T> lst, T key) {
-		// TODO Your task
-		return null;
+	public ListItem<T> insertSingleHead(ListItem<T> lst, T key) 
+	{
+		ListItem<T> l = new ListItem<T>(key);
+		l.next = lst;
+		return l;
 	}
 
 	/**
@@ -62,9 +99,44 @@ public class A<T> {
 	 * @throws IllegalArgumentException
 	 *             if key or cmp is null
 	 */
-	public ListItem<T> removeElementsEqualX(ListItem<T> lst, T key, Comparator<T> cmp) throws IllegalArgumentException {
-		// TODO Your task
-		return null;
+	
+	public ListItem<T> removeElementsEqualX(ListItem<T> lst, T key, Comparator<T> cmp) throws IllegalArgumentException 
+	{
+		if(cmp == null || key == null)
+		{
+			throw new IllegalArgumentException("cmp oder die Liste sind null");
+		}
+		
+		if(lst == null)
+		{
+			return null;
+		}
+		
+		else if(cmp.compare(lst.key, key) == 0)
+		{
+			if(lst.next == null)
+			{
+				return null;
+			}
+			lst = lst.next;
+			return removeElementsEqualX(lst, key, cmp);
+		}
+		else 
+		{
+			if(cmp.compare(lst.next.key, key) == 0)
+			{
+				lst.next = lst.next.next;
+			}
+			if(cmp.compare(lst.next.key, key) != 0)
+			{
+				return removeElementsEqualX(lst.next, key, cmp);
+			}
+			else
+			{
+				return removeElementsEqualX(lst, key, cmp);
+			}
+		}
+		//return lst;
 	}
 
 	/**
@@ -76,9 +148,17 @@ public class A<T> {
 	 *            the list to work on
 	 * @return the new list
 	 */
-	public ListItem<T> ringShiftLeft(ListItem<T> lst) {
-		// TODO Your task
-		return null;
+	public ListItem<T> ringShiftLeft(ListItem<T> lst) 
+	{
+		ListItem<T> rueckgabe = lst.next;
+		ListItem<T> current = lst; 
+		while(current.next != null)
+		{
+			current = current.next;
+		}
+		current.next = lst;
+		lst.next = null;
+		return rueckgabe;
 	}
 
 	/**
@@ -95,11 +175,43 @@ public class A<T> {
 	 * @throws IllegalArgumentException
 	 *             if lsts is null.
 	 */
-	public ListItem<T> listsInList(ListItem<ListItem<T>> lsts) throws IllegalArgumentException {
-		// TODO Your task
-		return null;
+	
+	public ListItem<T> listsInList(ListItem<ListItem<T>> lsts) throws IllegalArgumentException 
+	{
+		if(lsts == null)
+		{
+			throw new IllegalArgumentException("Die Liste von Listen ist null");
+		}
+		if(lsts.next == null)
+		{
+			return lsts.key;
+		}
+		
+		ListItem<T> lastlist = null;
+		if(lsts.next != null)
+		{
+			lastlist = listsInList(lsts.next);
+		}
+		
+		ListItem<T> nlst = lsts.key;
+		findlast(nlst).next = lastlist;
+		return nlst;
 	}
-
+	
+	/**
+	 * Die Funktion geht die Liste durch um das Letzte Element der Liste zu finden und zurückzugeben.
+	 * @param lst Die übergebene Liste
+	 * @return Das letzte Listenelement. 
+	 */
+	public ListItem<T> findlast(ListItem<T> lst)
+	{
+		if(lst.next != null)
+		{
+			lst = findlast(lst.next);
+		}
+		return lst;
+	}
+	
 	/**
 	 * Die Methode Ã¼bertrÃ¤gt alle Runs des Parameters arr als Liste in eine Liste und gibt den Kopf der erstellten
 	 * Liste von Listen zurÃ¼ck. Nutzen Sie zum Vergleich den Parameter cmp. Falls fÃ¼r arr oder cmp eine null-Referenz
@@ -116,7 +228,30 @@ public class A<T> {
 	 *             if arr or cmp is null
 	 */
 	public ListItem<ListItem<T>> arrayRunsToListOfLists(T[] arr, Comparator<T> cmp) throws IllegalArgumentException {
-		// TODO Your task
-		return null;
+		if(arr == null || cmp == null)
+		{
+			throw new IllegalArgumentException("arr oder cmp sind null");
+		}
+		ListItem<ListItem<T>> nlst = new ListItem<ListItem<T>>(null);
+		//ListItem<T> einzelneLst = new ListItem<T>(arr[0]);
+		for(int i = 0; i < arr.length; i++)
+		{
+			while(cmp.compare(arr[i], arr[i+1]) == -1)
+			{
+				//einzelneLst.next.insert(arr[i+1]);
+				ListItem<T> einzelneLst = new ListItem<T>(arr[i+1]);
+				
+			}
+		}
+		
+		return nlst;
+		
+		
+		
+		
+		
+		
+		
+		
 	}
 }

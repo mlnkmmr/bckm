@@ -9,8 +9,8 @@ package data;
  */
 public class ListItem<T> {
 
-	public T			key;
-	public ListItem<T>	next;
+	public T key;
+	public ListItem<T> next;
 
 	/**
 	 * Constructor of this Class
@@ -41,36 +41,60 @@ public class ListItem<T> {
 	}
 
 	/**
-	 * Die Methode gibt den Schlüsselwert an der gesuchten Position in der Liste zurück. Ist die gesuchte Position
-	 * nicht in der Liste, soll eine IllegalArgumentException geworfen werden. *
+	 * Die Methode gibt den Schlüsselwert an der gesuchten Position in der Liste
+	 * zurück. Ist die gesuchte Position nicht in der Liste, soll eine
+	 * IllegalArgumentException geworfen werden. *
 	 * 
 	 * @param pos
-	 *            the position to return the key from. Position 1 means the current element
+	 *            the position to return the key from. Position 1 means the current
+	 *            element
 	 * @return the key of the element at pos
 	 * @throws IllegalArgumentException
 	 *             if the position ist not in the list
 	 */
 	public T get(int pos) throws IllegalArgumentException {
-		// TODO Your task. Please delete the following Code when you are implementing this method.
-		throw new UnsupportedOperationException(
-				"\nThe method get(int pos) in the class data.ListItem is not yet implementated."
-						+ "\nYou first have to implement this method in exercice A1.4.");
+		int i = 0;
+		ListItem<T> curr = this;
+		while (curr.next != null) {
+			if (i == pos) {
+				break;
+
+			} else if (curr.next == null) {
+				throw new IllegalArgumentException("Gesuchte Position nicht in der List!");
+
+			} else {
+				i++;
+				curr = curr.next;
+			}
+
+		}
+		return curr.key;
 	}
 
 	/**
-	 * Die Methode gibt die Länge der Liste zurück. Dabei hat die Liste die Länge null, falls keine Listenelemente
-	 * folgen und zudem der aktuelle Schlüssel null ist. Ansonsten ist die Länge einer Liste die Anzahl an
-	 * Listenelemente, wobei das letzte Element nicht mitgezählt wird, falls die vorherstehende Bedingung zutrifft.
+	 * Die Methode gibt die Länge der Liste zurück. Dabei hat die Liste die Länge
+	 * null, falls keine Listenelemente folgen und zudem der aktuelle Schlüssel null
+	 * ist. Ansonsten ist die Länge einer Liste die Anzahl an Listenelemente, wobei
+	 * das letzte Element nicht mitgezählt wird, falls die vorherstehende Bedingung
+	 * zutrifft.
 	 * 
 	 * @return the size of this list
 	 */
 	public int getSize() {
-		// TODO Your task. Please delete the following Code when you are implementing this method.
-		System.out.println("\nThe method getSize() in the class data.ListItem is not yet implementated."
-				+ "\nYou first have to implement this method in exercice A1.4.");
-		return -9999;
+		if (this.key == null && this.next == null) {
+			return 0;
+		}
+		int i = 0;
+		ListItem<T> curr = this;
+		while (curr.key != null && curr.next != null) {
+			i++;
+			curr = curr.next;
+		}
+		return i;
 	}
 
+	
+	
 	/**
 	 * Inserts an key into this list.
 	 * 
@@ -79,12 +103,18 @@ public class ListItem<T> {
 	 * @throws IllegalArgumentException
 	 *             if key is null
 	 */
-	public void insert(T key) throws IllegalArgumentException {
+	public void insert(T key) throws IllegalArgumentException 
+	{
 		if (key == null)
+		{
 			throw new IllegalArgumentException("Cannot insert null");
+		}
 		else if (this.key == null && this.next == null)
+		{
 			this.key = key;
-		else {
+		}
+		else 
+		{
 			ListItem<T> p = this;
 			while (p.next != null)
 				p = p.next;

@@ -16,7 +16,13 @@ public class ComparatorRadius implements Comparator<CircleElement> {
 	 */
 	@Override
 	public int compare(CircleElement elem1, CircleElement elem2) {
-		// TODO Your task
-		return 0;
+		double elem1X1=elem1.getPoint(0).getX(); 
+		double elem1X2=elem1.getPoint(1).getX();
+		double elem2X1=elem2.getPoint(0).getX();
+		double elem2X2=elem2.getPoint(1).getX();
+		double deltaElem1=(elem1X1-elem1X2)/2;
+		double deltaElem2=(elem2X1-elem2X2)/2;
+		int ergebniss=(int) (deltaElem1-deltaElem2);
+		return ergebniss;
 	}
 }

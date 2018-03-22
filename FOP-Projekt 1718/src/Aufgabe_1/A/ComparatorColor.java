@@ -16,8 +16,25 @@ public class ComparatorColor implements Comparator<GeometricModelElement> {
 	 * util.Constants festgelegt und ein kleinerer Code ist als kleiner anzusehen.
 	 */
 	@Override
-	public int compare(GeometricModelElement elem1, GeometricModelElement elem2) throws IllegalArgumentException {
-		// TODO Your task
-		return 0;
+	public int compare(GeometricModelElement elem1, GeometricModelElement elem2) throws IllegalArgumentException 
+	{
+		int comp = 0;
+		if(8 < elem1.getColorCode() && 1 > elem1.getColorCode() && 8 < elem2.getColorCode() && 1 > elem2.getColorCode())
+		{
+			throw new IllegalArgumentException("Der übergebene Farbcode ist nicht definiert");
+		}
+		else if(elem1.getColorCode() > elem2.getColorCode())
+		{
+			comp = 1;
+		}
+		else if(elem1.getColorCode() < elem2.getColorCode())
+		{
+			comp = -1;
+		}
+		else if(elem1.getColorCode() == elem2.getColorCode())
+		{
+			comp = 0;
+		}
+		return comp;
 	}
 }

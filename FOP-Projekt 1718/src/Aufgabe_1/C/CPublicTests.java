@@ -86,4 +86,5 @@ public class CPublicTests {
 		Assert.assertEquals(seven, res.next.next.next);
 		Assert.assertEquals(null, res.next.next.next.next);
 	}
+	
 }
