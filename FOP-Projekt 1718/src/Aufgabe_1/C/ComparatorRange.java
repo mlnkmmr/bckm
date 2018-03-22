@@ -23,7 +23,7 @@ public class ComparatorRange implements Comparator<AngledGeometricElement> {
 			return -1;
 		if (range(elem1) == range(elem2))
 			return 0;
-		else (range(elem1) > range(elem2)) //test für tessa
+		else // (range(elem1) > range(elem2))
 			return 1;
 	}
 
