@@ -36,6 +36,8 @@ public class MainView extends JFrame {
 	MainCanvas					canvas;
 	// names of the available pictures
 	JComboBox<String>			pictureNames;
+	
+	JComboBox<String>           geometricNames;
 	// timer, for drawing a picture in an interval
 	Timer						timer;
 
@@ -116,6 +118,12 @@ public class MainView extends JFrame {
 		spaceL.setMinimumSize(new Dimension(width / 2 - 50, 10));
 		top.add(spaceR, BorderLayout.EAST);
 		top.add(spaceL, BorderLayout.WEST);
+		
+//-------create a drop down box for choosing the geometric object
+		String[] geometricElementNames= {"Triangle ELement", "EquilateralTriangleELement"};
+		this.geometricNames= new JComboBox<String>(geometricElementNames);
+		
+		top.add(this.geometricNames, BorderLayout.EAST);
 
 		// add the new panel to the top of the frame panel
 		add(top, BorderLayout.NORTH);
