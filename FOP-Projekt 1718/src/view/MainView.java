@@ -122,6 +122,7 @@ public class MainView extends JFrame {
 //-------create a drop down box for choosing the geometric object
 		String[] geometricElementNames= {"Triangle ELement", "EquilateralTriangleELement"};
 		this.geometricNames= new JComboBox<String>(geometricElementNames);
+		geometricNames.setName("Geometrische Objekte");
 		
 		top.add(this.geometricNames, BorderLayout.EAST);
 
