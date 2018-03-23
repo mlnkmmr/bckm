@@ -89,6 +89,10 @@ public class DTest {
 	public void invertTriples_Test_3() {
 
 	}
+	@Test(expected = IllegalArgumenztException.class)
+	public void invertTriples_Test_4() {
+		
+	}
 
 	/*****************************************************************
 	 * divideAlternatinglyIntoLists
