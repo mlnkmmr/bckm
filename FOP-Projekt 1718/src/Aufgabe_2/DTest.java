@@ -17,6 +17,7 @@ public class DTest {
 	private ListItem<Integer> lst;
 	private ListItem<Integer> lst2;
 	private ListItem<Integer> lst3;
+	private ListItem<Integer> lst4;
 
 	private Integer[] arr1 = { 1 };
 	private Integer[] arr2 = { 10, 100, 1000 };
@@ -68,6 +69,12 @@ public class DTest {
 		for (int i = 0; i < 6; i++) {
 			s.next = new ListItem<Integer>(3);
 			s = s.next;
+		}
+		lst4 = new ListItem<Integer>(1);
+		ListItem<Integer> r = lst4;
+		for (int i = 1; i = 10; i++) {
+			t.next = new ListItem<Integer>(i);
+			t = t.next;
 		}
 	}
 
@@ -187,17 +194,34 @@ public class DTest {
 
 	@Test
 	public void invertTriples_Test_1() {
-		
+		assert.assertEquals(7, dInt.removeSecMaxElement(lst, cmp).key, 0);
+		assert.assertEquals(6, dInt.removeSecMaxElement(lst, cmp).next.key, 0);
+		assert.assertEquals(5, dInt.removeSecMaxElement(lst, cmp).next.next.key, 0);
+		assert.assertEquals(8, dInt.removeSecMaxElement(lst, cmp).next.next.next.key, 0);
+		assert.assertEquals(9, dInt.removeSecMaxElement(lst, cmp).next.next.next.next.key, 0);
 	}
 
 	@Test
 	public void invertTriples_Test_2() {
-		
+		assert.assertEquals(2, dInt.removeSecMaxElement(lst, cmp).key, 0);
+		assert.assertEquals(1, dInt.removeSecMaxElement(lst, cmp).next.key, 0);
+		assert.assertEquals(0, dInt.removeSecMaxElement(lst, cmp).next.next.key, 0);
+		//lst2
 	}
 
 	@Test
 	public void invertTriples_Test_3() {
-		
+		assert.assertEquals(3, dInt.removeSecMaxElement(lst, cmp).key, 0);
+		assert.assertEquals(2, dInt.removeSecMaxElement(lst, cmp).next.key, 0);
+		assert.assertEquals(1, dInt.removeSecMaxElement(lst, cmp).next.next.key, 0);
+		assert.assertEquals(6, dInt.removeSecMaxElement(lst, cmp).next.next.next.key, 0);
+		assert.assertEquals(5, dInt.removeSecMaxElement(lst, cmp).next.next.next.next.key, 0);
+		assert.assertEquals(4, dInt.removeSecMaxElement(lst, cmp).next.next.next.next.next.key, 0);
+		assert.assertEquals(9, dInt.removeSecMaxElement(lst, cmp).next.next.next.next.next.next.key, 0);
+		assert.assertEquals(8, dInt.removeSecMaxElement(lst, cmp).next.next.next.next.next.next.key, 0);
+		assert.assertEquals(7, dInt.removeSecMaxElement(lst, cmp).next.next.next.next.next.next.next.key, 0);
+		assert.assertEquals(10, dInt.removeSecMaxElement(lst, cmp).next.next.next.next.next.next.next.next.key, 0);
+		//lst4
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -211,17 +235,17 @@ public class DTest {
 
 	@Test
 	public void divideAlternatinglyIntoLists_Test_1() {
-
+		
 	}
 
 	@Test
 	public void divideAlternatinglyIntoLists_Test_2() {
-
+		
 	}
 
 	@Test
 	public void divideAlternatinglyIntoLists_Test_3() {
-
+		
 	}
 
 	/*****************************************************************
