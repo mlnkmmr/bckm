@@ -18,11 +18,11 @@ public class IsoscelesTrapezoidElement extends AngledGeometricElement {
 	Point c;
 	Point d;
 	
-	public IsoscelesTrapezoidElement(Point a, Point b, Point c, Point d) {
-		this.a = a;
-		this.b = b;
-		this.c = c;
-		this.d = d;
+	public void TrapezoidElement(Point A, Point B, Point C, Point D) {
+		this.a = A;
+		this.b = B;
+		this.c = C;
+		this.d = D;
 	}	
 	@Override
 	protected String getJSONClassName() {
@@ -30,17 +30,13 @@ public class IsoscelesTrapezoidElement extends AngledGeometricElement {
 	}
 
 	@Override
-	public GeometricModelElement cloneElement() {
-		IsoscelesTrapezoidElement isoscelesTrapezoid = new IsoscelesTrapezoidElement(a, b, c, d);
-
-		Point[] p = new Point[super.getPoints().length];
-		for (int i = 0; i < p.length; i++) {
-			Point old = super.getPoint(i);
-			Point n = new Point(old.getX(), old.getY());
-			p[i] = n;
-		}
-		isoscelesTrapezoid.setPoints(p);
-		isoscelesTrapezoid.changeColorCode(super.getColorCode());
+	public IsoscelesTrapezoidElement cloneElement()
+	{
+		IsoscelesTrapezoidElement isoscelesTrapezoid = new IsoscelesTrapezoidElement();
+		Point CloneA = new Point(a.getX(), a.getY());
+		Point CloneB = new Point(b.getX(), b.getY());
+		Point CloneC = new Point(c.getX(), c.getY());
+		Point CloneD = new Point(d.getX(), d.getY());
 		return isoscelesTrapezoid;
 	}
 
