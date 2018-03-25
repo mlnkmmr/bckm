@@ -5,18 +5,29 @@ import model.Point;
 import util.Constants;
 
 /**
- * @author Tessa
+ * @author Tessa Crößmann
  *
  */
 public class RectangleElement extends AngledGeometricElement
 {
-	/**
-	 * Constructor first point => lower left corner second point => upper right corner
-	 */
-	public RectangleElement(Point x, Point y)
+	
+	Point X;
+	Point Y;
+	 Point Z;
+	 Point A;
+	 int lengthx;
+	 int lengthy;
+	
+	public RectangleElement(Point x, Point a, int lengthx, int lengthy)
 	{
-		
-		
+		this.lengthx = lengthx;
+		this.lengthy = lengthy;
+		x = X;
+		a = A;
+		Y.setX(x.getX() + lengthx);
+		Y.setY(x.getY());
+		Z.setX(x.getX());
+		Z.setY(x.getY() + lengthy);
 	}
 	
 	@Override
@@ -28,8 +39,12 @@ public class RectangleElement extends AngledGeometricElement
 	@Override
 	public GeometricModelElement cloneElement()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		RectangleElement rectangle = new RectangleElement(X, A, lengthx, lengthy);
+		Point CloneX = new Point(X.getX(), X.getY());
+		Point CloneY = new Point(Y.getX(), Y.getY());
+		Point CloneZ = new Point(Z.getX(), Z.getY());
+		Point CloneA = new Point(A.getX(), A.getY());
+		return rectangle;
 	}
 
 }

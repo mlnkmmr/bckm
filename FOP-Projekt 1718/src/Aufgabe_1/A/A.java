@@ -232,7 +232,7 @@ public class A<T> {
 		{
 			throw new IllegalArgumentException("arr oder cmp sind null");
 		}
-		ListItem<ListItem<T>> nlst = new ListItem<ListItem<T>>(null);
+		/*ListItem<ListItem<T>> nlst = new ListItem<ListItem<T>>(null);
 		//ListItem<T> einzelneLst = new ListItem<T>(arr[0]);
 		for(int i = 0; i < arr.length; i++)
 		{
@@ -243,7 +243,12 @@ public class A<T> {
 				
 			}
 		}
-		
+		*/
+		ListItem<T> fistLast = new ListItem<T>(arr[0]);
+		for(int i = 0; i < arr.length; i++)
+		{
+			
+		}
 		return nlst;
 		
 		

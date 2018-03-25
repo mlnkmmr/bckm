@@ -8,16 +8,12 @@ import util.Constants;
  * @author Tessa Crößmann
  *
  */
-public class SquareElement extends AngledGeometricElement
+public class SquareElement extends RectangleElement
 {
 	
-	private Point X;
-	private int Sitelength;
-	
-	public SquareElement(Point x, int sitelength)
+	public SquareElement(Point x, Point y, int sitelength)
 	{
-		x = X;
-		
+		super(x, y, sitelength, sitelength);	
 	}
 	
 	
@@ -30,8 +26,12 @@ public class SquareElement extends AngledGeometricElement
 	@Override
 	public GeometricModelElement cloneElement()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		SquareElement square = new SquareElement(X, Y, lengthx);
+		Point CloneX = new Point(X.getX(), X.getY());
+		Point CloneY = new Point(Y.getX(), Y.getY());
+		Point CloneZ = new Point(Z.getX(), Z.getY());
+		Point CloneA = new Point(A.getX(), A.getY());
+		return square;
 	}
 
 }
