@@ -26,10 +26,11 @@ public class D<T> {
 	 *            Index of the first element
 	 * @param ind2
 	 *            Index of the second element
+	 * @return 
 	 * @throws IllegalArgumentException
 	 *             if arr is null or Indices is invalid.
 	 */
-	public void switchElements(T[] arr, int ind1, int ind2) throws IllegalArgumentException {
+	public Integer[] switchElements(T[] arr, int ind1, int ind2) throws IllegalArgumentException {
 		if (arr[ind1].equals(null) || arr[ind2].equals(null) || ind1 >= arr.length || ind2 >= arr.length || ind1 < 0
 				|| ind2 < 0) {
 			throw new IllegalArgumentException(

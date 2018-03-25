@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
+
+import Aufgabe_1.D.D;
+
 import java.util.Comparator;
 import data.ListItem;
 
@@ -30,7 +33,7 @@ public class DTest {
 	 */
 	@Before
 	public void buildTestListAsdInt() {
-		listAsdInt = new ListItem<Integer>(0);
+		ListItem<Integer> listAsdInt = new ListItem<Integer>(0);
 		ListItem<Integer> p = listAsdInt;
 		for (int i = 1; i < 10; i++) {
 			p.next = new ListItem<Integer>(i);
@@ -40,13 +43,13 @@ public class DTest {
 
 	@Before
 	public void buildElemAndLst() {
-		head = new ListItem<Integer>(0);
+		ListItem<Integer> elem = new ListItem<Integer>(0);
 		ListItem<Integer> p = elem;
 		for (int i = 1; i < 3; i++) {
 			p.next = new ListItem<Integer>(i);
 			p = p.next;
 		}
-		head2 = new ListItem<Integer>(0);
+		ListItem<Integer> elem2 = new ListItem<Integer>(0);
 		ListItem<Integer> q = elem2;
 		for (int i = 1; i < 3; i++) {
 			q.next = new ListItem<Integer>(i);
@@ -65,14 +68,14 @@ public class DTest {
 			r = r.next;
 		}
 		lst3 = new ListItem<Integer>(3);
-		ListItem<Integer> r = lst3;
+		ListItem<Integer> s = lst3;
 		for (int i = 0; i < 6; i++) {
 			s.next = new ListItem<Integer>(3);
 			s = s.next;
 		}
 		lst4 = new ListItem<Integer>(1);
-		ListItem<Integer> r = lst4;
-		for (int i = 1; i = 10; i++) {
+		ListItem<Integer> t = lst4;
+		for (int i = 1; i <= 10; i++) {
 			t.next = new ListItem<Integer>(i);
 			t = t.next;
 		}
