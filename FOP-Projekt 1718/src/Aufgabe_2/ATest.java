@@ -2,6 +2,7 @@ package Aufgabe_2;
 
 import org.junit.Test;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -22,7 +23,7 @@ import Aufgabe_1.V.V;
 import data.ListItem;
 import model.GeometricModelElement;
 
-public class ATest<T> {
+public class ATest {
 
 	private ListItem<Integer> lst1, lst2, lst3, lst4, lst5;
 	private ListItem<Integer> lst1Test, lst2Test, lst3Test, lst4Test, lst5Test;
@@ -41,7 +42,7 @@ public class ATest<T> {
 		Integer[] arr = { 1, 2, 3, 4, 5, 6 };
 		Integer[] arrFin = { 3, 2, 1, 6, 5, 4 };
 		MeinA.invertTriples(arr);
-		assertEquals(arr, arrFin);
+		assertArrayEquals(arr, arrFin);
 	}
 
 	@Test
@@ -49,7 +50,7 @@ public class ATest<T> {
 		Integer[] arr = { 1, 2 };
 		Integer[] arrFin = { 1, 2 };
 		MeinA.invertTriples(arr);
-		assertEquals(arr, arrFin);
+		assertArrayEquals(arr, arrFin);
 	}
 
 	@Test
@@ -57,7 +58,7 @@ public class ATest<T> {
 		Integer[] arr = { 1, 2, 3, 4, 5, 6, 7 };
 		Integer[] arrFin = { 3, 2, 1, 6, 5, 4, 7 };
 		MeinA.invertTriples(arr);
-		assertEquals(arr, arrFin);
+		assertArrayEquals(arr, arrFin);
 	}
 
 	@Test(expected = IllegalArgumentException.class)
@@ -71,6 +72,7 @@ public class ATest<T> {
 
 	@Test
 	public void insertSingleHead_Test_1() {
+		lst1= new ListItem<Integer>(0);
 		lst1.key = 1;
 
 		int testInt = MeinA.insertSingleHead(lst1, 42).key;
@@ -80,6 +82,13 @@ public class ATest<T> {
 
 	@Test
 	public void insertSingleHead_Test_2() {
+		//Initialize ListItems
+		lst1= new ListItem<Integer>(0);
+		lst2= new ListItem<Integer>(0);
+		lst3= new ListItem<Integer>(0);
+		lst4= new ListItem<Integer>(0);
+		lst5= new ListItem<Integer>(0);
+				
 		lst1.key = 1;
 		lst2.key = 2;
 		lst3.key = 3;
@@ -98,6 +107,13 @@ public class ATest<T> {
 
 	@Test
 	public void insertSingleHead_Test_3() {
+		//Initialize ListItems
+		lst1= new ListItem<Integer>(0);
+		lst2= new ListItem<Integer>(0);
+		lst3= new ListItem<Integer>(0);
+		lst4= new ListItem<Integer>(0);
+		lst5= new ListItem<Integer>(0);
+		
 		lst1.key = 1;
 		lst2.key = 3123;
 		lst3.key = 3;
@@ -120,6 +136,18 @@ public class ATest<T> {
 
 	@Test
 	public void removeElementsEqualX_Test_1() {
+		//Initialize ListItems
+		lst1= new ListItem<Integer>(0);
+		lst2= new ListItem<Integer>(0);
+		lst3= new ListItem<Integer>(0);
+		lst4= new ListItem<Integer>(0);
+		lst5= new ListItem<Integer>(0);
+		lst1Test= new ListItem<Integer>(0);
+		lst2Test= new ListItem<Integer>(0);
+		lst3Test= new ListItem<Integer>(0);
+		lst4Test= new ListItem<Integer>(0);
+		lst5Test= new ListItem<Integer>(0);
+		
 		lst1.key = 1;
 		lst2.key = 2;
 		lst3.key = 3;
@@ -147,6 +175,18 @@ public class ATest<T> {
 
 	@Test
 	public void removeElementsEqualX_Test_2() {
+		//Initialize ListItems
+		lst1= new ListItem<Integer>(0);
+		lst2= new ListItem<Integer>(0);
+		lst3= new ListItem<Integer>(0);
+		lst4= new ListItem<Integer>(0);
+		lst5= new ListItem<Integer>(0);
+		lst1Test= new ListItem<Integer>(0);
+		lst2Test= new ListItem<Integer>(0);
+		lst3Test= new ListItem<Integer>(0);
+		lst4Test= new ListItem<Integer>(0);
+		lst5Test= new ListItem<Integer>(0);
+		
 		lst1.key = 1;
 		lst2.key = 2;
 		lst3.key = 3;
@@ -173,6 +213,13 @@ public class ATest<T> {
 
 	@Test
 	public void removeElementsEqualX_Test_3() {
+		//Initialize ListItems
+		lst1= new ListItem<Integer>(0);
+		lst2= new ListItem<Integer>(0);
+		lst3= new ListItem<Integer>(0);
+		lst4= new ListItem<Integer>(0);
+		lst5= new ListItem<Integer>(0);
+		
 		lst1.key = 1;
 		lst2.key = 2;
 		lst3.key = 3;
@@ -199,6 +246,18 @@ public class ATest<T> {
 
 	@Test
 	public void ringShiftLeft_Test_1() {
+		//Initialize ListItems
+		lst1= new ListItem<Integer>(0);
+		lst2= new ListItem<Integer>(0);
+		lst3= new ListItem<Integer>(0);
+		lst4= new ListItem<Integer>(0);
+		lst5= new ListItem<Integer>(0);
+		lst1Test= new ListItem<Integer>(0);
+		lst2Test= new ListItem<Integer>(0);
+		lst3Test= new ListItem<Integer>(0);
+		lst4Test= new ListItem<Integer>(0);
+		lst5Test= new ListItem<Integer>(0);
+		
 		lst1.key = 1;
 		lst2.key = 2;
 		lst3.key = 3;
@@ -225,6 +284,18 @@ public class ATest<T> {
 
 	@Test
 	public void ringShiftLeft_Test_2() {
+		//Initialize ListItems
+		lst1= new ListItem<Integer>(0);
+		lst2= new ListItem<Integer>(0);
+		lst3= new ListItem<Integer>(0);
+		lst4= new ListItem<Integer>(0);
+		lst5= new ListItem<Integer>(0);
+		lst1Test= new ListItem<Integer>(0);
+		lst2Test= new ListItem<Integer>(0);
+		lst3Test= new ListItem<Integer>(0);
+		lst4Test= new ListItem<Integer>(0);
+		lst5Test= new ListItem<Integer>(0);
+		
 		lst1.key = 1;
 		lst2.key = 2;
 		lst3.key = 3;
@@ -251,6 +322,18 @@ public class ATest<T> {
 
 	@Test
 	public void ringShiftLeft_Test_3() {
+		//Initialize ListItems
+		lst1= new ListItem<Integer>(0);
+		lst2= new ListItem<Integer>(0);
+		lst3= new ListItem<Integer>(0);
+		lst4= new ListItem<Integer>(0);
+		lst5= new ListItem<Integer>(0);
+		lst1Test= new ListItem<Integer>(0);
+		lst2Test= new ListItem<Integer>(0);
+		lst3Test= new ListItem<Integer>(0);
+		lst4Test= new ListItem<Integer>(0);
+		lst5Test= new ListItem<Integer>(0);
+		
 		lst1.key = 1;
 		lst2.key = 2;
 		lst3.key = 3;
@@ -281,6 +364,20 @@ public class ATest<T> {
 
 	@Test
 	public void listsInList_Test_1() {
+		//Initialize ListItems
+		lst1= new ListItem<Integer>(0);
+		lst2= new ListItem<Integer>(0);
+		lst3= new ListItem<Integer>(0);
+		lst4= new ListItem<Integer>(0);
+		lst5= new ListItem<Integer>(0);
+		lst1Test= new ListItem<Integer>(0);
+		lst2Test= new ListItem<Integer>(0);
+		lst3Test= new ListItem<Integer>(0);
+		lst4Test= new ListItem<Integer>(0);
+		lst5Test= new ListItem<Integer>(0);
+		outerList1 = new ListItem<ListItem<Integer>>(null);
+		outerList2 = new ListItem<ListItem<Integer>>(null);
+		
 		lst1.key = 1;
 		lst2.key = 2;
 		lst3.key = 3;
@@ -323,6 +420,20 @@ public class ATest<T> {
 
 	@Test
 	public void listsInList_Test_2() {
+		//Initialize ListItems
+		lst1= new ListItem<Integer>(0);
+		lst2= new ListItem<Integer>(0);
+		lst3= new ListItem<Integer>(0);
+		lst4= new ListItem<Integer>(0);
+		lst5= new ListItem<Integer>(0);
+		lst1Test= new ListItem<Integer>(0);
+		lst2Test= new ListItem<Integer>(0);
+		lst3Test= new ListItem<Integer>(0);
+		lst4Test= new ListItem<Integer>(0);
+		lst5Test= new ListItem<Integer>(0);
+		outerList1 = new ListItem<ListItem<Integer>>(null);
+		outerList2 = new ListItem<ListItem<Integer>>(null);
+		
 		lst1.key = 1;
 		lst2.key = 2;
 		lst3.key = 3;
@@ -365,6 +476,20 @@ public class ATest<T> {
 
 	@Test
 	public void listsInList_Test_3() {
+		//Initialize ListItems
+		lst1= new ListItem<Integer>(0);
+		lst2= new ListItem<Integer>(0);
+		lst3= new ListItem<Integer>(0);
+		lst4= new ListItem<Integer>(0);
+		lst5= new ListItem<Integer>(0);
+		lst1Test= new ListItem<Integer>(0);
+		lst2Test= new ListItem<Integer>(0);
+		lst3Test= new ListItem<Integer>(0);
+		lst4Test= new ListItem<Integer>(0);
+		lst5Test= new ListItem<Integer>(0);
+		outerList1 = new ListItem<ListItem<Integer>>(null);
+		outerList2 = new ListItem<ListItem<Integer>>(null);
+		
 		lst1.key = 1;
 		lst2.key = 2;
 		lst3.key = 3;
@@ -417,6 +542,18 @@ public class ATest<T> {
 
 	@Test
 	public void arrayRunsToListOfLists_Test_1() {
+		//Initialize ListItems
+		lst1= new ListItem<Integer>(0);
+		lst2= new ListItem<Integer>(0);
+		lst3= new ListItem<Integer>(0);
+		lst4= new ListItem<Integer>(0);
+		lst5= new ListItem<Integer>(0);
+		lst1Test= new ListItem<Integer>(0);
+		lst2Test= new ListItem<Integer>(0);
+		lst3Test= new ListItem<Integer>(0);
+		lst4Test= new ListItem<Integer>(0);
+		lst5Test= new ListItem<Integer>(0);
+
 		Integer[] arr = { 1, 2, 3, 4, 5};
 
 		lst1Test.key = 1;
@@ -450,6 +587,18 @@ public class ATest<T> {
 
 	@Test
 	public void arrayRunsToListOfLists_Test_2() {
+		//Initialize ListItems
+		lst1= new ListItem<Integer>(0);
+		lst2= new ListItem<Integer>(0);
+		lst3= new ListItem<Integer>(0);
+		lst4= new ListItem<Integer>(0);
+		lst5= new ListItem<Integer>(0);
+		lst1Test= new ListItem<Integer>(0);
+		lst2Test= new ListItem<Integer>(0);
+		lst3Test= new ListItem<Integer>(0);
+		lst4Test= new ListItem<Integer>(0);
+		lst5Test= new ListItem<Integer>(0);
+
 		Integer[] arr = { 1, 2, 2, 2, 1};
 
 		lst1Test.key = 1;
