@@ -119,24 +119,31 @@ public class A<T> {
 				return null;
 			}
 			lst = lst.next;
-			return removeElementsEqualX(lst, key, cmp);
+			removeElementsEqualX(lst, key, cmp);
+			return lst;
 		}
 		else 
 		{
+			if(lst.next == null)
+			{
+			    return lst;
+			}
 			if(cmp.compare(lst.next.key, key) == 0)
 			{
 				lst.next = lst.next.next;
 			}
 			if(cmp.compare(lst.next.key, key) != 0)
 			{
-				return removeElementsEqualX(lst.next, key, cmp);
+				removeElementsEqualX(lst.next, key, cmp);
+				return lst;
 			}
 			else
 			{
-				return removeElementsEqualX(lst, key, cmp);
+				removeElementsEqualX(lst, key, cmp);
+				return lst;
 			}
 		}
-		//return lst;
+		
 	}
 
 	/**
@@ -244,12 +251,13 @@ public class A<T> {
 			}
 		}
 		*/
-		ListItem<T> fistLast = new ListItem<T>(arr[0]);
+		/*ListItem<T> fistLast = new ListItem<T>(arr[0]);
 		for(int i = 0; i < arr.length; i++)
 		{
 			
 		}
-		return nlst;
+		*/
+		return null;
 		
 		
 		
